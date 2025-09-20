@@ -1,0 +1,375 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasmin Reda - Penetration Tester Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f0f; /* Even darker background */
+            color: #d1d5db; /* Lighter gray text */
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #2563eb; /* Vibrant blue */
+            border-radius: 6px;
+            border: 3px solid #1a1a1a;
+        }
+        .header-bg {
+            background-color: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(8px);
+        }
+        .text-vibrant-blue {
+            color: #2563eb;
+            text-shadow: 0 0 5px rgba(37, 99, 235, 0.5); /* Subtle blue glow */
+        }
+        .nav-link.active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #1a1a1a, #2563eb, #8b5cf6) 1; /* Blue and purple gradient */
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.2); /* Blue glow */
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .hover-effect:hover {
+            transform: scale(1.03);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.4);
+        }
+        .skill-icon {
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .skill-item:hover .skill-icon {
+            transform: scale(1.2);
+            color: #8b5cf6; /* Purple on hover */
+        }
+        /* Keyframe for a cool hero intro animation */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeInSlideUp 1s ease-out forwards;
+        }
+        .terminal-card {
+            background-color: #000000;
+            border: 2px solid #2563eb;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+            font-family: 'Roboto Mono', monospace;
+            color: #2563eb;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <header class="header-bg sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-100 font-['Orbitron']">Yasmin Reda</a>
+            <div class="space-x-4 hidden md:flex">
+                <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">About</a>
+                <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Skills</a>
+                <a href="#services" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Services</a>
+                <a href="#projects" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-90 backdrop-blur-sm">
+            <a href="#about" class="block px-6 py-3 text-center text-gray-300 hover:bg-gray-700 transition-colors duration-300">About</a>
+            <a href="#skills" class="block px-6 py-3 text-center text-gray-300 hover:bg-gray-700 transition-colors duration-300">Skills</a>
+            <a href="#services" class="block px-6 py-3 text-center text-gray-300 hover:bg-gray-700 transition-colors duration-300">Services</a>
+            <a href="#projects" class="block px-6 py-3 text-center text-gray-300 hover:bg-gray-700 transition-colors duration-300">Projects</a>
+            <a href="#contact" class="block px-6 py-3 text-center text-gray-300 hover:bg-gray-700 transition-colors duration-300">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4">
+        <!-- Hero Section -->
+        <section id="hero" class="h-screen flex flex-col justify-center items-center text-center">
+            <div class="relative w-48 h-48 mb-6 overflow-hidden rounded-full shadow-lg border-4 border-vibrant-blue animate-pulse">
+                <!-- Fallback image in case the URL doesn't load -->
+                <img src="https://placehold.co/192x192/1f2937/2563eb?text=Profile+Pic" alt="Yasmin Reda Profile Picture" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight font-['Orbitron'] fade-in" style="animation-delay: 0.2s;">Yasmin Reda</h1>
+            <h2 class="text-xl sm:text-2xl md:text-3xl text-vibrant-blue font-medium mb-6 fade-in" style="animation-delay: 0.4s;">Penetration Tester & Bug Bounty Hunter</h2>
+            <p class="text-base sm:text-lg text-gray-400 max-w-2xl fade-in" style="animation-delay: 0.6s;">"Securing Every Step. Empowering Every Move"</p>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section-padding fade-in" data-section>
+            <div class="card">
+                <h3 class="text-3xl font-bold mb-4 text-white">About Me</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Aspiring Cybersecurity Engineer passionate about ethical hacking, penetration testing, and bug bounty hunting.
+                    Currently pursuing a B.Sc. in Computer Science at El Shorouk Academy.
+                    Focused on practical skills in vulnerability analysis, exploitation, and web application security.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-padding fade-in" data-section>
+            <h3 class="text-3xl font-bold text-center mb-12 text-white">Skills</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Development & Scripting -->
+                <div class="card hover-effect skill-item">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-vibrant-blue text-2xl mr-4 skill-icon"></i>
+                        <h4 class="text-xl font-bold text-white">Development & Scripting</h4>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Python</li>
+                        <li>C++</li>
+                        <li>JavaScript</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                    </ul>
+                </div>
+                <!-- Cybersecurity & Pen Testing -->
+                <div class="card hover-effect skill-item">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-shield-alt text-vibrant-blue text-2xl mr-4 skill-icon"></i>
+                        <h4 class="text-xl font-bold text-white">Cybersecurity & Pen Testing</h4>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Kali Linux</li>
+                        <li>Burp Suite</li>
+                        <li>Wireshark</li>
+                        <li>Basic understanding of XSS</li>
+                        <li>SQL Injection</li>
+                    </ul>
+                </div>
+                <!-- Networking & Databases -->
+                <div class="card hover-effect skill-item">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-network-wired text-vibrant-blue text-2xl mr-4 skill-icon"></i>
+                        <h4 class="text-xl font-bold text-white">Networking & Databases</h4>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>OSI Model</li>
+                        <li>TCP/IP</li>
+                        <li>SQL Basics</li>
+                        <li>CCNA (Cisco & Fortinet)</li>
+                    </ul>
+                </div>
+                <!-- Professional & Soft Skills -->
+                <div class="card hover-effect skill-item">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-users text-vibrant-blue text-2xl mr-4 skill-icon"></i>
+                        <h4 class="text-xl font-bold text-white">Professional & Soft Skills</h4>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Fast Learner</li>
+                        <li>Time Management</li>
+                        <li>Problem Solving</li>
+                        <li>Team Collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-padding fade-in" data-section>
+            <h3 class="text-3xl font-bold text-center mb-12 text-white">Services</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-magnifying-glass-chart text-vibrant-blue text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Vulnerability Assessment & Penetration Testing (VAPT)</h4>
+                </div>
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-file-shield text-vibrant-blue text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Web Application Security Testing</h4>
+                </div>
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-lock text-vibrant-blue text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Network Security & Configuration (Cisco & Fortinet)</h4>
+                </div>
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-user-graduate text-vibrant-blue text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Security Awareness Training</h4>
+                </div>
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-bug text-vibrant-blue text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Basic Bug Bounty Research</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-padding fade-in" data-section>
+            <h3 class="text-3xl font-bold text-center mb-12 text-white">Projects</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 Card -->
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-folder-open text-vibrant-blue text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">VPN Solutions with FortiGate</h4>
+                    <p class="text-gray-300 leading-relaxed">
+                        A practical project focused on designing and implementing VPN solutions using Fortinet FortiGate firewall to secure remote access and enterprise networks.
+                    </p>
+                </div>
+                <!-- Project 2 Card (Placeholder) -->
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-folder-open text-vibrant-blue text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Web Application Vulnerability Analysis</h4>
+                    <p class="text-gray-300 leading-relaxed">
+                        A project showcasing vulnerability scanning and exploitation techniques on a mock web application, including XSS and SQL injection.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="section-padding fade-in" data-section>
+            <h3 class="text-3xl font-bold text-center mb-12 text-white">Achievements</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-trophy text-amber-400 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">3x CCNA Networking Certifications</h4>
+                    <p class="text-gray-300">(Cisco)</p>
+                </div>
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-award text-amber-400 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Network Fundamentals Certificate</h4>
+                    <p class="text-gray-300">- MaharaTech</p>
+                </div>
+                <div class="card flex flex-col items-center text-center hover-effect">
+                    <i class="fas fa-certificate text-amber-400 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2 text-white">Cybersecurity Certificate</h4>
+                    <p class="text-gray-300">- GDG AOU</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding fade-in" data-section>
+            <h3 class="text-3xl font-bold text-center mb-12 text-white">Contact Me</h3>
+            <div class="card max-w-2xl mx-auto text-center">
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    I'm always open to new opportunities and collaborations. Feel free to get in touch!
+                </p>
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-map-marker-alt text-vibrant-blue mr-2"></i>
+                        <span>Cairo, Egypt</span>
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-envelope text-vibrant-blue mr-2"></i>
+                        <span>yasmin7reda@gmail.com</span>
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-phone-alt text-vibrant-blue mr-2"></i>
+                        <span>+20 1032853167</span>
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <i class="fab fa-linkedin text-vibrant-blue mr-2"></i>
+                        <a href="https://www.linkedin.com/in/yasmin7-reda" target="_blank" class="hover:underline">www.linkedin.com/in/yasmin7-reda</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 py-6 mt-12 text-center text-gray-400">
+        <p>&copy; 2024 Yasmin Reda. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // IntersectionObserver for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-section]').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
